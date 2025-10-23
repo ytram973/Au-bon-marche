@@ -10,7 +10,7 @@ class Market:
         """Ajoute un client à la liste des clients du marché."""
         self.customers.append(customer)
 
-    def bilan_journalier(self):
+    def daily_report(self):
         """Affiche le bilan de la journée avec tous les clients et leurs achats."""
         print("\n=== Bilan de la journée ===")
         for customer in self.customers:
