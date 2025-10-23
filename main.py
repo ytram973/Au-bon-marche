@@ -25,13 +25,13 @@ endive = Product("endive",5,2.50,"kg","legumes")
 epinard = Product("épinard",4,2.60,"kg","legumes")
 poireau = Product("poireau",5,1.20,"kg","legumes")
 potiron = Product("potiron",6,2.50,"pièce","legumes")
-radis_noir = Product("radis_noir",10,5.00,"pièce","legumes")
+radis_noir = Product("radis noir",10,5.00,"pièce","legumes")
 salsifis = Product("salsifis",3,2.50,"kg","legumes")
 
 # dictionnaire pour faire correspondre la variable et le produit saisie par l'utilisateur
 # {"clementine" : clementine, "datte" : datte,....}
 products_dict : dict = {product.name.lower(): product for product in Product.products}
-
+continue_basket = "oui"
 
 print("Bienvenue sur le marché de Mérignac")
 market = Market()
@@ -41,27 +41,35 @@ print("Faîtes votre choix (1/2) : ")
 choice = input("1 - Bilan de la journée / 2 - Nouvel achat client : ")
 print(choice)
 
+# nouvel achat client
 if choice == "2":
+
     name = input("Nom du client : ")
     firstname = input("Prénom du client : ")
-
     client1 = Customer(name, firstname, market)
 
-    # affichage de tous le stock
-    add_product_name = ""
+    while continue_basket == "oui":
+        # affichage de tous le stock
+        add_product_name = ""
 
-    while True:
-        add_product_name = input("Quel produit ? ")
-        if Product.product_exists(add_product_name):
-            break
+        # on vérifie que le produit existe
+        while True:
+            add_product_name = (input("Quel produit ? ")).lower()
+            if Product.product_exists(add_product_name):
+                break
 
-    product = products_dict[add_product_name]
+        product = products_dict[add_product_name]
 
-    while True:
-        add_product_quantity = input(f"Quelle quantité ? ")
-        if product.stock_available(float(add_product_quantity)):
-            break
+        # on vérifie qu'il y a assez de stock
+        # en fonction de la quantité demandée
+        while True:
+            add_product_quantity = input(f"Quelle quantité ? ")
+            if product.stock_available(float(add_product_quantity)):
+                break
 
-    client1.basket.add_product(products_dict[add_product_name], float(add_product_quantity))
-    client1.show_purchases()
-    client1.create_ticket()
+        print("-" * 50)
+
+        client1.basket.add_product(products_dict[add_product_name], float(add_product_quantity))
+        client1.show_purchases()
+        client1.create_ticket()
+        continue_basket = input("Voulez_vous continuer vos achats ? ")
