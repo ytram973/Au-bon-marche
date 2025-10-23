@@ -1,21 +1,36 @@
 from basket import Basket
-from product import Product
+from dataclasses import dataclass
 
-
+@dataclass
 class Customer:
+    """
+    Représente un client avec un nom, un prénom et un panier d'achats.
+    On ajoute le client dans une liste market
+    """
+    def __init__(self,nom:str,prenom:str,market):
+        """
+        Initialise un nouveau client.
 
-    def __init__(self,nom,prenom):
+        Args:
+            nom (str): Le nom du client.
+            prenom (str): Le prénom du client.
+            basket(class): la Classe basket.
+        """
         self.nom = nom
         self.prenom = prenom
         self.basket = Basket()
-
-
-    def show_purchases(self):
+        market.add_client(self)
         
+    def show_purchases(self):
+        """
+        Fonction qui affiche le contenu du panier du client.
+        """
         self.basket.show_basket()
         
     def create_ticket(self):
-        
-        total = self.basket.calculate_total()
+        """
+        Calcule le total des achats et l'affiche le montant a payer.
+        """
+        total:float = self.basket.calculate_total()
         print(f"\nTotal to pay: {total} €")
         
