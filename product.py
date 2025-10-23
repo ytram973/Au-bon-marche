@@ -53,3 +53,27 @@ class Product:
         """
         total = self.price * quantity
         return round(total, 2)
+
+    def stock_available(self, quantity :float) -> bool:
+        """
+        Vérifie que le stock est suffisant pour l'ajouter au panier
+        :param quantity: la quantité à retirer du stock
+        """
+        if quantity > self.stock:
+            print(f"La quantité demandée est supérieure au stock, merci de prendre au maximum {self.stock} {self.stock_unit}")
+            return False
+        else:
+            return True
+
+
+    @classmethod
+    def product_exists(cls, name: str) -> bool:
+        """
+        Vérifie que le produit existe dans le marché
+        """
+        if any(product.name.lower() == name.lower() for product in cls.products):
+            return True
+        else:
+            print("Produit inexistant")
+            return False
+

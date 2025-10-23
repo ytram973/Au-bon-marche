@@ -10,12 +10,11 @@ class Basket:
         else:
             self.articles[product.name] = [product, quantity]
         
-        
-        print(f"\n{quantity} {product} ajouter au panier")
+        price = Product.calculate_price(product,quantity)
+        print(f"\n{quantity}{product.stock_unit} {product.name} ajouté au panier -> {price}€")
         product.decrease_stock(quantity)
 
-        
-       
+
     def show_basket(self):
         print("\nContenu du panier :")
         for nom, (product, qte) in self.articles.items():

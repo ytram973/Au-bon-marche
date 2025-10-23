@@ -28,30 +28,39 @@ potiron = Product("potiron",6,2.50,"pièce","legumes")
 radis_noir = Product("radis_noir",10,5.00,"pièce","legumes")
 salsifis = Product("salsifis",3,2.50,"kg","legumes")
 
+# dictionnaire pour faire correspondre la variable et le produit saisie par l'utilisateur
+# {"clementine" : clementine, "datte" : datte,....}
+products_dict : dict = {product.name.lower(): product for product in Product.products}
 
-"""for product in Product.products:
-    print(product)"""
 
 print("Bienvenue sur le marché de Mérignac")
 print("-"*50)
-print("Faîtes votre choix (1/2) :")
+print("Faîtes votre choix (1/2) : ")
 
-choice = input("1 - Bilan de la journée / 2 - Achat client:")
+choice = input("1 - Bilan de la journée / 2 - Nouvel achat client : ")
 print(choice)
 
+if choice == "2":
+    name = input("Nom du client : ")
+    firstname = input("Prénom du client : ")
 
-client1 = Customer("Doe", "John")
+    client1 = Customer(name, firstname)
 
+    # affichage de tous le stock
+    add_product_name = ""
 
-product_basket = input("Quel produit ?")
-product_quantity = input(f"Quelle quantité ? {product_basket}")
+    while True:
+        add_product_name = input("Quel produit ? ")
+        if Product.product_exists(add_product_name):
+            break
 
+    product = products_dict[add_product_name]
 
-client1.basket.add_product(clementine, 3)
-client1.basket.add_product(carotte, 2)
+    while True:
+        add_product_quantity = input(f"Quelle quantité ? ")
+        if product.stock_available(float(add_product_quantity)):
+            break
 
-
-client1.show_purchases()
-
-
-client1.create_ticket()
+    client1.basket.add_product(products_dict[add_product_name], float(add_product_quantity))
+    client1.show_purchases()
+    client1.create_ticket()
