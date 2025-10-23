@@ -27,5 +27,15 @@ radis_noir = Product("radis_noir",10,5.00,"pièce","legumes")
 salsifis = Product("salsifis",3,2.50,"kg","legumes")
 
 
-for product in Product.products:
-    print(product)
+"""for product in Product.products:
+    print(product)"""
+
+print("Bienvenue sur le marché de Mérignac")
+print("-"*50)
+print("Faîtes votre choix (1/2) :")
+
+choice = input("1 - Bilan de la journée / 2 - Achat client:")
+print(choice)
+
+product_basket = input("Quel produit ?")
+product_quantity = input(f"Quelle quantité ? {product_basket}")
