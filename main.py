@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #  -*- coding: utf-8 -*-
-
+from market import Market
 from product import Product
 from customer import Customer
 
@@ -34,6 +34,7 @@ products_dict : dict = {product.name.lower(): product for product in Product.pro
 
 
 print("Bienvenue sur le marché de Mérignac")
+market = Market()
 print("-"*50)
 print("Faîtes votre choix (1/2) : ")
 
@@ -44,7 +45,7 @@ if choice == "2":
     name = input("Nom du client : ")
     firstname = input("Prénom du client : ")
 
-    client1 = Customer(name, firstname)
+    client1 = Customer(name, firstname, market)
 
     # affichage de tous le stock
     add_product_name = ""

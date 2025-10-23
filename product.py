@@ -27,12 +27,9 @@ class Product:
         :param quantity: la quantité à retirer du stock
         :return: retourne la valeur du stock mis à jour
         """
-        if quantity > self.stock:
-            print(f"La quantité demandée est supérieure au stock, merci de prendre au maximum {self.stock} {self.stock_unit}")
-        else:
+        if quantity <= self.stock:
             self.stock -= quantity
             print("Stock mis à jour")
-
         return self.stock
 
     def get_stock(self):
