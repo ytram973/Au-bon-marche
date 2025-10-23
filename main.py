@@ -37,7 +37,7 @@ print("Bienvenue sur le marché de Mérignac")
 market = Market()
 
 while True :
-    print("-"*50)
+    print("-"*60)
     print("Faîtes votre choix (1/2) : ")
 
     choice = input("1 - Bilan de la journée / 2 - Nouvel achat client : ")
@@ -47,6 +47,7 @@ while True :
     if choice == "1":
         # Bilan de la journée
         market.daily_report()
+        Market.add_stock()
         
     # nouvel achat client
     if choice == "2":
@@ -54,8 +55,9 @@ while True :
         name = input("Nom du client : ")
         firstname = input("Prénom du client : ")
         client1 = Customer(name, firstname, market)
-
+        continue_basket = "oui"
         while continue_basket == "oui":
+            Market.add_stock()
             # affichage de tous le stock
             add_product_name = ""
 
@@ -74,7 +76,7 @@ while True :
                 if product.stock_available(float(add_product_quantity)):
                     break
 
-            print("-" * 50)
+            print("-" * 60)
 
             client1.basket.add_product(products_dict[add_product_name], float(add_product_quantity))
             client1.show_purchases()

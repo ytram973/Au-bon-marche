@@ -1,5 +1,7 @@
 
 from customer import Customer
+from product import Product
+
 
 class Market:
     def __init__(self):
@@ -12,9 +14,25 @@ class Market:
 
     def daily_report(self):
         """Affiche le bilan de la journée avec tous les clients et leurs achats."""
-        print("\n=== Bilan de la journée ===")
+        print(f"\n{"=== Bilan de la journée ===":^60}")
         for customer in self.customers:
             print(f"\nClient : {customer.nom} {customer.prenom}")
-            customer.show_purchases()
             total = customer.basket.calculate_total()
-            print(f"Total à payer : {total} €")
+            print(f"Total de ses achats : {total} €")
+
+    @staticmethod
+    def add_stock():
+        """
+        Affiche la liste des produits en vente dans le marché
+        """
+        print("=" * 60)
+        print(f"{"Stock du marché de Mérignac":^60}")
+        print("=" * 60)
+        print(f"{"Produit":<20} {"Famille":<12} {"Stock":<7} {"Prix (€)":<10} {"Unité":<7}")
+        print("-" * 60)
+
+        for product in Product.products:
+            print(f"{product.name:<20} {product.family:<12} "
+                  f"{product.stock:<7} {product.price:<10.2f} {product.stock_unit:<7}")
+
+
