@@ -5,8 +5,9 @@ from dataclasses import dataclass
 class Customer:
     """
     Représente un client avec un nom, un prénom et un panier d'achats.
+    On ajoute le client dans une liste market
     """
-    def __init__(self,nom:str,prenom:str):
+    def __init__(self,nom:str,prenom:str,market):
         """
         Initialise un nouveau client.
 
@@ -18,7 +19,7 @@ class Customer:
         self.nom = nom
         self.prenom = prenom
         self.basket = Basket()
-
+        market.add_client(self)
         
     def show_purchases(self):
         """
