@@ -47,6 +47,7 @@ while True :
     if choice == "1":
         # Bilan de la journée
         market.daily_report()
+        break
         
     # nouvel achat client
     if choice == "2":
@@ -54,6 +55,7 @@ while True :
         name = input("Nom du client : ")
         firstname = input("Prénom du client : ")
         client1 = Customer(name, firstname, market)
+        
 
         while continue_basket == "oui":
             # affichage de tous le stock
@@ -61,7 +63,7 @@ while True :
 
             # on vérifie que le produit existe
             while True:
-                add_product_name = (input("Quel produit ? ")).lower()
+                add_product_name = (input("Quel produit ? ")).strip().lower()
                 if Product.product_exists(add_product_name):
                     break
 
@@ -70,9 +72,11 @@ while True :
             # on vérifie qu'il y a assez de stock
             # en fonction de la quantité demandée
             while True:
-                add_product_quantity = input("Quelle quantité ? ")
-                if product.stock_available(float(add_product_quantity)):
-                    break
+                add_product_quantity = input("Quelle quantité ? ").strip()
+                if add_product_quantity.replace('.', '', 1).isdigit():
+                    if product.stock_available(float(add_product_quantity)):
+                        break
+                else: print("Ce n'est pas un chiffre.")    
 
             print("-" * 50)
 
