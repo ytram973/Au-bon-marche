@@ -20,3 +20,16 @@ class Product:
 
     def __repr__(self):
         return f"{self.name} : stock -> {self.stock} {self.stock_unit}, prix -> {self.price} euros / {self.stock_unit}"
+
+    def decrease_stock(self, quantity : int):
+        """
+        Permet de mettre à jour le stock d'un produit
+        :param quantity: la quantité à retirer du stock
+        """
+        if quantity > self.stock:
+            print(f"La quantité demandée est supérieure au stock, merci de prendre au maximum {self.stock} {self.stock_unit}")
+        else:
+            self.stock = (self.stock - quantity)
+            print("Stock mis à jour")
+
+        return self.stock
