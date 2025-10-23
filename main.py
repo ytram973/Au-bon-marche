@@ -2,6 +2,8 @@
 #  -*- coding: utf-8 -*-
 
 from product import Product
+from customer import Customer
+
 
 # ajout des fruits et légumes dans Product.products
 clementine = Product("clémentine",6,2.90,"kg","fruit")
@@ -29,3 +31,16 @@ salsifis = Product("salsifis",3,2.50,"kg","legumes")
 
 for product in Product.products:
     print(product)
+    
+
+client1 = Customer("Doe", "John")
+
+
+client1.basket.add_product(clementine, 3)  
+client1.basket.add_product(carotte, 2)     
+
+
+client1.show_purchases()
+
+
+client1.create_ticket()
