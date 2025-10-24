@@ -53,10 +53,8 @@ while True :
     # nouvel achat client
     if choice == "2":
 
-        name = input("Nom du client : ")
-        firstname = input("Prénom du client : ")
         # on génère un nouveau client
-        client = Customer(name, firstname, market)
+        client = Customer(input("Nom du client : "), input("Prénom du client : "), market)
         continue_basket = "oui"
 
 
@@ -92,7 +90,7 @@ while True :
             client.show_purchases()
 
             # on redemande au client s'il souhaite ajouter d'autres produits
-            continue_basket = input("\nVoulez_vous continuer vos achats ? ")
+            continue_basket = input("\nVoulez_vous continuer vos achats ? (oui/non) :").strip().lower()
 
         # on affiche le total à payer une fois les achats réalisés
         client.create_ticket()
