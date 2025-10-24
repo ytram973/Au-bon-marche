@@ -55,25 +55,27 @@ while True :
 
         name = input("Nom du client : ")
         firstname = input("Prénom du client : ")
-        client1 = Customer(name, firstname, market)
+        # on génère un nouveau client
+        client = Customer(name, firstname, market)
         continue_basket = "oui"
 
 
         while continue_basket == "oui":
+            # affichage du stock du marché
             Market.add_stock()
+
             # affichage de tous le stock
             add_product_name = ""
 
             # on vérifie que le produit existe
             while True:
-                add_product_name = (input("Quel produit ? ")).strip().lower()
+                add_product_name = (input("\nQuel produit ? ")).strip().lower()
                 if Product.product_exists(add_product_name):
                     break
 
             product = products_dict[add_product_name]
 
-            # on vérifie qu'il y a assez de stock
-            # en fonction de la quantité demandée
+            # on vérifie qu'il y a assez de stock en fonction de la quantité demandée
             while True:
                 add_product_quantity = input("Quelle quantité ? ").strip()
                 if add_product_quantity.replace('.', '', 1).isdigit():
@@ -83,9 +85,15 @@ while True :
 
             print("-" * 60)
 
-            client1.basket.add_product(products_dict[add_product_name], float(add_product_quantity))
-            client1.show_purchases()
+            # on ajoute le produit au panier du client
+            client.basket.add_product(products_dict[add_product_name], float(add_product_quantity))
+
+            # on affiche le panier du client
+            client.show_purchases()
+
+            # on redemande au client s'il souhaite ajouter d'autres produits
             continue_basket = input("\nVoulez_vous continuer vos achats ? ")
-        
-        client1.create_ticket()
+
+        # on affiche le total à payer une fois les achats réalisés
+        client.create_ticket()
     

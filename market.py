@@ -1,8 +1,9 @@
 
 from customer import Customer
 from product import Product
+from dataclasses import dataclass
 
-
+@dataclass
 class Market:
     def __init__(self):
         """Liste des clients présents dans le marché qui est ajoutée via la classe customer à sa création"""
@@ -16,7 +17,7 @@ class Market:
         """Affiche le bilan de la journée avec tous les clients et leurs achats."""
         print(f"\n{"=== Bilan de la journée ===":^60}")
         for customer in self.customers:
-            print(f"\nClient : {customer.nom} {customer.prenom}")
+            print(f"\nClient : {customer.name} {customer.firstname}")
             total = customer.basket.calculate_total()
             print(f"Total de ses achats : {total} €")
         print("-"*60)
@@ -37,4 +38,4 @@ class Market:
             print(f"{product.name:<20} {product.family:<12} "
                   f"{product.stock:<7.2f} {product.price:<10.2f} {product.stock_unit:<7}")
 
-
+        print("=" * 60)

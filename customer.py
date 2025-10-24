@@ -7,17 +7,17 @@ class Customer:
     Représente un client avec un nom, un prénom et un panier d'achats.
     On ajoute le client dans une liste market
     """
-    def __init__(self,nom:str,prenom:str,market):
+    def __init__(self, name:str, firstname:str, market):
         """
         Initialise un nouveau client.
 
         Args:
-            nom (str): Le nom du client.
-            prenom (str): Le prénom du client.
+            name (str): Le nom du client.
+            firstname (str): Le prénom du client.
             basket(class): la Classe basket.
         """
-        self.nom = nom
-        self.prenom = prenom
+        self.name = name
+        self.firstname = firstname
         self.basket = Basket()
         market.add_client(self)
         
@@ -29,8 +29,8 @@ class Customer:
         
     def create_ticket(self):
         """
-        Calcule le total des achats et l'affiche le montant a payer.
+        Calcule le total des achats et l'affiche le montant à payer.
         """
         total:float = self.basket.calculate_total()
-        print(f"\nTotal to pay: {total} €")
+        print(f"\nTotal à payer: {total} €")
         

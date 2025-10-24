@@ -36,11 +36,12 @@ class Basket:
         Affiche le contenu du panier.
         """
         print("\nContenu du panier :")
-        for nom, (product, qte) in self.articles.items():
-            print(f"{nom} : {qte} {product.stock_unit} à {product.price} €/ {product.stock_unit}")
+        for name, (product, quantity) in self.articles.items():
+            price = Product.calculate_price(product, quantity)
+            print(f"{name} : {quantity} {product.stock_unit} à {price}€")
 
 
-    def calculate_total(self):
+    def calculate_total(self) -> float:
         """
         Calcule le total des produits dans le panier.
 

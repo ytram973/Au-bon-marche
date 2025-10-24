@@ -21,7 +21,7 @@ class Product:
     def __repr__(self):
         return f"{self.name} : stock -> {self.stock} {self.stock_unit}, prix -> {self.price} euros / {self.stock_unit}"
 
-    def decrease_stock(self, quantity : float):
+    def decrease_stock(self, quantity : float) -> float:
         """
         Permet de mettre à jour le stock d'un produit
         :param quantity: la quantité à retirer du stock
@@ -32,19 +32,19 @@ class Product:
             print("Stock mis à jour")
         return self.stock
 
-    def get_stock(self):
+    def get_stock(self) -> float:
         """
         Permet de récupérer la quantité disponible (kg ou unité) d'un produit
         """
         return self.stock
 
-    def get_price(self):
+    def get_price(self) -> float:
         """
         Permet de récupérer le prix (kg ou unité) d'un produit
         """
         return self.price
 
-    def calculate_price(self, quantity: float):
+    def calculate_price(self, quantity: float) -> float:
         """
         Permet de calculer le prix d'un produit en fonction de la quantité demandée
         """
