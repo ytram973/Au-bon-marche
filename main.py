@@ -41,8 +41,8 @@ while True :
     print("Faîtes votre choix (1/2) : ")
 
     choice = input("1 - Bilan de la journée / 2 - Nouvel achat client : ")
-    print(choice)
-
+    if choice not in ["1", "2"]:
+        print("Faites un choix entre 1 et 2, merci.")
 
     if choice == "1":
         # Bilan de la journée
