@@ -19,6 +19,8 @@ class Market:
             print(f"\nClient : {customer.nom} {customer.prenom}")
             total = customer.basket.calculate_total()
             print(f"Total de ses achats : {total} €")
+        print("-"*60)
+        print(f"\nNombre de clients dans la journée : {len(self.customers)}")
 
     @staticmethod
     def add_stock():
@@ -33,6 +35,6 @@ class Market:
 
         for product in Product.products:
             print(f"{product.name:<20} {product.family:<12} "
-                  f"{product.stock:<7} {product.price:<10.2f} {product.stock_unit:<7}")
+                  f"{product.stock:<7.2f} {product.price:<10.2f} {product.stock_unit:<7}")
 
 

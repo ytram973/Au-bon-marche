@@ -85,7 +85,7 @@ while True :
 
             client1.basket.add_product(products_dict[add_product_name], float(add_product_quantity))
             client1.show_purchases()
-            continue_basket = input("Voulez_vous continuer vos achats ? ")
+            continue_basket = input("\nVoulez_vous continuer vos achats ? ")
         
         client1.create_ticket()
     
