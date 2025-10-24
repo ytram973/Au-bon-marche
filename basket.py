@@ -12,7 +12,7 @@ class Basket:
         """
         self.articles = {}  
     
-    def add_product(self, product: Product, quantity: float):
+    def add_product(self, product: Product, quantity: float) -> None:
         """
         Ajoute un produit au panier ou met à jour la quantité si le produit existe déjà.
 
@@ -27,11 +27,11 @@ class Basket:
             self.articles[product.name] = [product, quantity]
         
         price = Product.calculate_price(product,quantity)
-        print(f"\n{quantity}{product.stock_unit} {product.name} ajouté au panier -> {price}€")
+        print(f"\n{quantity}{product.stock_unit} de {product.name} ajouté au panier -> {price}€")
         product.decrease_stock(quantity)
 
 
-    def show_basket(self):
+    def show_basket(self) -> None :
         """
         Affiche le contenu du panier.
         """

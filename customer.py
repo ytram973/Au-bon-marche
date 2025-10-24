@@ -21,13 +21,13 @@ class Customer:
         self.basket = Basket()
         market.add_client(self)
         
-    def show_purchases(self):
+    def show_purchases(self) -> None:
         """
         Fonction qui affiche le contenu du panier du client.
         """
         self.basket.show_basket()
         
-    def create_ticket(self):
+    def create_ticket(self) -> None:
         """
         Calcule le total des achats et l'affiche le montant à payer.
         """

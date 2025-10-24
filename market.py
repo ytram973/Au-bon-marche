@@ -7,13 +7,13 @@ from dataclasses import dataclass
 class Market:
     def __init__(self):
         """Liste des clients présents dans le marché qui est ajoutée via la classe customer à sa création"""
-        self.customers = []
+        self.customers =  []
 
-    def add_client(self, customer:Customer):
+    def add_client(self, customer:Customer) -> None:
         """Ajoute un client à la liste des clients du marché."""
         self.customers.append(customer)
 
-    def daily_report(self):
+    def daily_report(self) -> None:
         """Affiche le bilan de la journée avec tous les clients et leurs achats."""
         print(f"\n{"=== Bilan de la journée ===":^60}")
         for customer in self.customers:
@@ -24,7 +24,7 @@ class Market:
         print(f"\nNombre de clients dans la journée : {len(self.customers)}")
 
     @staticmethod
-    def add_stock():
+    def add_stock() -> None:
         """
         Affiche la liste des produits en vente dans le marché
         """
